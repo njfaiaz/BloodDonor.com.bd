@@ -1,24 +1,6 @@
 @extends('auth.layouts')
 @section('title', 'Register')
 
-@push('styles')
-    <link rel="stylesheet" href="{{ asset('admin/plugins/morrisjs/morris.css') }}" />
-    <!-- Colorpicker Css -->
-    <link rel="stylesheet" href="{{ asset('admin/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css') }}" />
-    <!-- Multi Select Css -->
-    <link rel="stylesheet" href="{{ asset('admin/plugins/multi-select/css/multi-select.css') }}" />
-    <!-- Bootstrap Spinner Css -->
-    <link rel="stylesheet" href="{{ asset('admin/plugins/jquery-spinner/css/bootstrap-spinner.css') }}" />
-    <!-- Bootstrap Tagsinput Css -->
-    <link rel="stylesheet" href="{{ asset('admin/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}" />
-    <!-- Bootstrap Select Css -->
-    <link rel="stylesheet" href="{{ asset('admin/plugins/bootstrap-select/css/bootstrap-select.css') }}" />
-    <!-- noUISlider Css -->
-    <link rel="stylesheet" href="{{ asset('admin/plugins/nouislider/nouislider.min.css') }}" />
-    <!-- Select2 -->
-    <link rel="stylesheet" href="{{ asset('admin/plugins/select2/select2.css') }}" />
-    <link rel="stylesheet" href="{{ asset('admin/plugins/dropify/css/dropify.min.css') }}" />
-@endpush
 
 {{-- @section('content')
     <div class="container">
@@ -37,7 +19,7 @@
                                 <div class="col-md-6">
                                     <input id="name" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
-                                        value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                        value="{{ old('name') }}" autocomplete="name" autofocus>
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -125,7 +107,7 @@
                                                     <div class="form-group">
                                                         <input type="text" id="name" placeholder="Full Name"
                                                             class="form-control @error('name') is-invalid @enderror"
-                                                            name="name" value="{{ old('name') }}" autofocus required>
+                                                            name="name" value="{{ old('name') }}" autofocus>
                                                         @error('name')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -256,8 +238,7 @@
                                                     <div class="form-group">
                                                         <input id="phone" placeholder="Enter Your Phone"
                                                             class="form-control @error('phone') is-invalid @enderror"
-                                                            name="phone" value="{{ old('phone') }}" autofocus
-                                                            required>
+                                                            name="phone" value="{{ old('phone') }}" autofocus required>
                                                         @error('phone')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -339,38 +320,3 @@
 
     </section>
 @endsection
-
-
-
-
-
-@push('script')
-    {{-- <script src="{{ asset('admin/bundles/libscripts.bundle.js') }}"></script>
-    <!-- Lib Scripts Plugin Js -->
-    <script src="{{ asset('admin/bundles/vendorscripts.bundle.js') }}"></script>
-    <!-- Lib Scripts Plugin Js -->
-
-    <script src="{{ asset('admin/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js') }}"></script>
-    <!-- Bootstrap Colorpicker Js -->
-    <script src="{{ asset('admin/plugins/jquery-inputmask/jquery.inputmask.bundle.js') }}"></script>
-    <!-- Input Mask Plugin Js -->
-    <script src="{{ asset('admin/plugins/multi-select/js/jquery.multi-select.js') }}"></script>
-    <!-- Multi Select Plugin Js -->
-    <script src="{{ asset('admin/plugins/jquery-spinner/js/jquery.spinner.js') }}"></script>
-    <!-- Jquery Spinner Plugin Js -->
-    <script src="{{ asset('admin/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js') }}"></script>
-    <!-- Bootstrap Tags Input Plugin Js -->
-    <script src="{{ asset('admin/plugins/nouislider/nouislider.js') }}"></script>
-    <!-- noUISlider Plugin Js -->
-
-    <script src="{{ asset('admin/plugins/select2/select2.min.js') }}"></script>
-    <!-- Select2 Js -->
-
-    <script src="{{ asset('admin/bundles/mainscripts.bundle.js') }}"></script>
-    <!-- Custom Js -->
-    <script src="{{ asset('admin/js/pages/forms/advanced-form-elements.js') }}"></script>
-
-    <script src="{{ asset('admin/plugins/dropify/js/dropify.min.js') }}"></script>
-
-    <script src="{{ asset('admin/js/pages/forms/dropify.js') }}"></script> --}}
-@endpush

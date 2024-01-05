@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rules\File;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\User;
 
@@ -23,6 +23,7 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
+
 
 
     protected function validator(array $data)
