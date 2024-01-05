@@ -39,7 +39,7 @@ class RegisterController extends Controller
                 'thana_id' => ['required', 'string', 'max:255'],
                 'blood_give' => ['required', 'string', 'max:255'],
                 'plat_give' => ['required', 'string', 'max:255'],
-                'phone' => ['required', 'integer', 'min:11', 'max:15', 'unique:users'],
+                'phone' => ['required', 'min:11', 'max:15', 'unique:users'],
                 'last_time' => ['required', 'string', 'max:255'],
                 'profile' => ['nullable', File::image()->max('10mb')],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],

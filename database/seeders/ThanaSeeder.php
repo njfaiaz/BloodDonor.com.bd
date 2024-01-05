@@ -709,7 +709,7 @@ class ThanaSeeder extends Seeder
             ["id" => 696, "district_id"  =>  "64", "thana_name"  =>  "PIRGANJ"],
             ["id" => 697, "district_id"  =>  "64", "thana_name"  =>  "RANISANKAIL"],
             ["id" => 698, "district_id"  =>  "64", "thana_name"  =>  "RUHIA"],
-            ["id" => 699, "district_id"  =>  "64", "thana_name"  =>  "THAKURGAON          SADAR"],
+            ["id" => 699, "district_id"  =>  "64", "thana_name"  =>  "THAKURGAON SADAR"],
         ]);
     }
 }
