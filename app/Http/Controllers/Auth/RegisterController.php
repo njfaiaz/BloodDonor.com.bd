@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use App\Models\Thana;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Support\Str;
 use App\Models\User;
@@ -28,20 +29,26 @@ class RegisterController extends Controller
 
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'blood_group' => ['required', 'string', 'max:255'],
-            'gender' => ['required', 'string', 'max:255'],
-            'district_id' => ['required', 'string', 'max:255'],
-            'thana_id' => ['required', 'string', 'max:255'],
-            'blood_give' => ['required', 'string', 'max:255'],
-            'plat_give' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'string', 'max:255', 'unique:users'],
-            'last_time' => ['required', 'string', 'max:255'],
-            'profile' => ['nullable', File::image()->max('10mb')],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        return Validator::make(
+            $data,
+            [
+                'name' => ['required', 'string', 'max:255'],
+                'blood_group' => ['required', 'string', 'max:255'],
+                'gender' => ['required', 'string', 'max:255'],
+                'district_id' => ['required', 'string', 'max:255'],
+                'thana_id' => ['required', 'string', 'max:255'],
+                'blood_give' => ['required', 'string', 'max:255'],
+                'plat_give' => ['required', 'string', 'max:255'],
+                'phone' => ['required', 'integer', 'min:11', 'max:15', 'unique:users'],
+                'last_time' => ['required', 'string', 'max:255'],
+                'profile' => ['nullable', File::image()->max('10mb')],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            ],
+            [
+                'phone' => 'The phone field must be an Number!',
+            ]
+        );
     }
 
 
@@ -63,5 +70,11 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    public function thana($district_id)
+    {
+        $subCat = Thana::where('district_id', $district_id)->orderBy('thana_name', 'ASC')->get();
+        return json_encode($subCat);
     }
 }

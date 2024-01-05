@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreignIdFor(Thana::class);
             $table->string('blood_give');
             $table->string('plat_give');
-            $table->string('phone')->unique();
+            $table->integer('phone')->unique();
             $table->string('last_time');
             $table->string('profile')->nullable();
             $table->timestamp('email_verified_at')->nullable();

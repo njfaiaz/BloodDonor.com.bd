@@ -9,4 +9,9 @@ class Thana extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function district()
+    {
+        return $this->belongsTo(District::class, 'district_id', 'id');
+    }
 }
