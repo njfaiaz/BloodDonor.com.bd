@@ -1,5 +1,13 @@
 @extends('auth.layouts')
 @section('title', 'Register')
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('admin/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/dropify.min.css') }}">
+    <style>
+
+    </style>
+@endpush
+
 
 @section('content')
     <section class="login_box_area section_gap my-5">
@@ -84,12 +92,13 @@
                                                 <div class="col-md-6">
                                                     <label>Select District :</label>
                                                     <select id="district_id"
-                                                        class="form-control show-tick ms select2 @error('district_id') is-invalid @enderror"
+                                                        class="form-control js-example-disabled-results @error('district_id') is-invalid @enderror"
                                                         name="district_id" data-placeholder="Select">
                                                         @foreach ($districts as $district)
                                                             <option
                                                                 {{ in_array($district->id, old('district_name', [])) ? 'selected' : '' }}
-                                                                value="{{ $district->id }}"> {{ $district->district_name }}
+                                                                value="{{ $district->id }}">
+                                                                {{ $district->district_name }}
                                                             </option>
                                                         @endforeach
                                                     </select>
@@ -104,7 +113,7 @@
                                                     <label>Select Thana :</label>
 
                                                     <select id="thana_id"
-                                                        class="form-control form-select @error('thana_id') is-invalid @enderror"
+                                                        class="form-control js-example-disabled-results @error('thana_id') is-invalid @enderror"
                                                         name="thana_id">
                                                         <option></option>
                                                     </select>
@@ -160,7 +169,8 @@
                                                     </div>
                                                     <label for="last_time">Last Donet Blood :</label>
                                                     <div class="form-group">
-                                                        <input type="date" id="last_time" placeholder="Enter Your Phone"
+                                                        <input type="date" id="last_time"
+                                                            placeholder="Enter Your Phone"
                                                             class="form-control @error('last_time') is-invalid @enderror"
                                                             name="last_time" value="{{ old('last_time') }}" autofocus
                                                             required>
@@ -174,7 +184,7 @@
                                                 <div class="col-md-6">
                                                     <label for="profile">Profile :</label>
                                                     <input type="file"
-                                                        class="dropify form-control @error('profile') is-invalid @enderror"
+                                                        class="dropify @error('profile') is-invalid @enderror"
                                                         name="profile" value="{{ old('profile') }}">
                                                     @error('profile')
                                                         <span class="invalid-feedback" role="alert">
@@ -236,6 +246,8 @@
 
 @push('script')
     <script src="{{ asset('admin/bundles/jquery.js') }}"></script>
+    <script src="{{ asset('admin/js/pages/select2.min.js') }}"></script>
+    <script src="{{ asset('admin/js/pages/dropify.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('select[name="district_id"]').on('change', function() {
@@ -260,6 +272,20 @@
                     alert('danger');
                 }
             });
+        });
+    </script>
+
+    <script>
+        var $disabledResults = $(".js-example-disabled-results");
+        $disabledResults.select2();
+
+        $('.dropify').dropify({
+            messages: {
+                'default': 'Enter Your Profile',
+                'replace': 'Drag and drop or click to replace',
+                'remove': 'Remove',
+                'error': 'Ooops, something wrong happended.'
+            }
         });
     </script>
 @endpush

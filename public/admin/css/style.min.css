@@ -18166,3 +18166,32 @@ section.content {
     -webkit-transition: border-color 0.15s linear;
     transition: border-color 0.15s linear;
 }
+.select2-container .select2-selection--single {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 37px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+.select2-container .select2-selection--single .select2-selection__rendered {
+    display: block;
+    padding-left: 13px;
+    padding-right: 19px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.select2-container--default
+    .select2-selection--single
+    .select2-selection__rendered {
+    color: #444;
+    line-height: 39px;
+}
+.dropify-wrapper .dropify-message span.file-icon {
+    font-size: 30px;
+    color: #ccc;
+}
+.dropify-font-upload:before, .dropify-wrapper .dropify-message span.file-icon:before {
+    content: "";
+}
