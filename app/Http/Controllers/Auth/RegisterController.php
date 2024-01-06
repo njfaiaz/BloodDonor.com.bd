@@ -54,7 +54,7 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-        $slug = Str::slug($data['name'] . rand(1, 1000), '-');
+        $slug = User::uniqueSlug($data['name']);
         return User::create([
             'name' => $data['name'],
             'blood_group' => $data['blood_group'],
