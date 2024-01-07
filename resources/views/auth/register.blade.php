@@ -155,7 +155,7 @@
                                                 </div>
                                             </div>
                                             <div class="row clearfix">
-                                                <div class="col-md-6">
+                                                {{-- <div class="col-md-6">
                                                     <label for="phone">Phone :</label>
                                                     <div class="form-group">
                                                         <input id="phone" placeholder="Enter Your Phone"
@@ -180,8 +180,8 @@
                                                             </span>
                                                         @enderror
                                                     </div>
-                                                </div>
-                                                <div class="col-md-6">
+                                                </div> --}}
+                                                {{-- <div class="col-md-6">
                                                     <label for="profile">Profile :</label>
                                                     <input type="file"
                                                         class="dropify @error('profile') is-invalid @enderror"
@@ -191,6 +191,36 @@
                                                             <strong>{{ $message }}</strong>
                                                         </span>
                                                     @enderror
+                                                </div> --}}
+                                            </div>
+                                            <div class="row clearfix">
+                                                <div class="col-md-6">
+                                                    <label for="phone">Phone :</label>
+                                                    <div class="form-group">
+                                                        <input id="phone" placeholder="Enter Your Phone"
+                                                            class="form-control @error('phone') is-invalid @enderror"
+                                                            name="phone" value="{{ old('phone') }}" autofocus required>
+                                                        @error('phone')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="last_time">Last Donet Blood :</label>
+                                                    <div class="form-group">
+                                                        <input type="date" id="last_time"
+                                                            placeholder="Enter Your Phone"
+                                                            class="form-control @error('last_time') is-invalid @enderror"
+                                                            name="last_time" value="{{ old('last_time') }}" autofocus
+                                                            required>
+                                                        @error('last_time')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="row clearfix">

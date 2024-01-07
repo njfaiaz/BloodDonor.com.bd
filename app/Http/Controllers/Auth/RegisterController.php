@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Constants\Role;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Models\Thana;
-use Illuminate\Validation\Rules\File;
-use Illuminate\Support\Str;
 use App\Models\User;
 
 class RegisterController extends Controller
@@ -18,6 +17,14 @@ class RegisterController extends Controller
 
 
     protected $redirectTo = RouteServiceProvider::HOME;
+    protected function redirectTo()
+    {
+        if (Auth()->user()->role == 'admin') {
+            return route('admin.dashboard');
+        } elseif (Auth()->user()->role == 'user') {
+            return route('user.dashboard');
+        }
+    }
 
 
     public function __construct()
@@ -41,7 +48,6 @@ class RegisterController extends Controller
                 'plat_give' => ['required', 'string', 'max:255'],
                 'phone' => ['required', 'min:11', 'max:15', 'unique:users'],
                 'last_time' => ['required', 'string', 'max:255'],
-                'profile' => ['nullable', File::image()->max('10mb')],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
             ],
@@ -66,10 +72,11 @@ class RegisterController extends Controller
             'plat_give' => $data['plat_give'],
             'phone' => $data['phone'],
             'last_time' => $data['last_time'],
-            'profile' => $data['profile'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        dd($data);
     }
 
     public function thana($district_id)
